@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import fs from "fs";
+import os from "os";
 import path from "path";
 import 'dotenv/config';
 
@@ -112,7 +113,8 @@ app.post("/generate", async (req, res) => {
       });
     }
 
-    const filePath = path.join(process.cwd(), `quran-${Date.now()}.mp3`);
+    // const filePath = path.join(process.cwd(), `quran-${Date.now()}.mp3`);
+    const filePath = path.join(os.tmpdir(), `quran-${Date.now()}.mp3`);
 
     // Create empty file
     fs.writeFileSync(filePath, "");
